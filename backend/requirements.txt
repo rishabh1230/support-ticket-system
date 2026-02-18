@@ -4,3 +4,4 @@ psycopg2-binary
 django-filter
 python-dotenv
 google-genai
+django-cors-headers
