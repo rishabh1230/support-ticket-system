@@ -3,4 +3,4 @@ djangorestframework
 psycopg2-binary
 django-filter
 python-dotenv
-google-generativeai
+google-genai

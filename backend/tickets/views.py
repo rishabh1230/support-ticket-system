@@ -7,6 +7,7 @@ from django.db.models.functions import TruncDate
 
 from .models import Ticket
 from .serializers import TicketSerializer
+from .llm_service import classify_ticket
 
 
 class TicketViewSet(viewsets.ModelViewSet):
@@ -21,6 +22,9 @@ class TicketViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'priority', 'status']
     search_fields = ['title', 'description']
 
+    # ==============================
+    # STATS ENDPOINT
+    # ==============================
     @action(detail=False, methods=['get'], url_path='stats')
     def stats(self, request):
         total_tickets = Ticket.objects.count()
@@ -63,4 +67,24 @@ class TicketViewSet(viewsets.ModelViewSet):
                 item['category']: item['count']
                 for item in category_breakdown
             }
+        })
+
+    # ==============================
+    # LLM CLASSIFY ENDPOINT
+    # ==============================
+    @action(detail=False, methods=['post'], url_path='classify')
+    def classify(self, request):
+        description = request.data.get("description")
+
+        if not description:
+            return Response(
+                {"error": "Description is required"},
+                status=400
+            )
+
+        category, priority = classify_ticket(description)
+
+        return Response({
+            "suggested_category": category,
+            "suggested_priority": priority
         })
