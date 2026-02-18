@@ -3,6 +3,10 @@ import json
 from google import genai
 
 
+VALID_CATEGORIES = {"billing", "technical", "account", "general"}
+VALID_PRIORITIES = {"low", "medium", "high", "critical"}
+
+
 def classify_ticket(description: str):
     api_key = os.getenv("LLM_API_KEY")
 
@@ -11,7 +15,6 @@ def classify_ticket(description: str):
         return None, None
 
     try:
-        # Create client properly (new SDK style)
         client = genai.Client(api_key=api_key)
 
         prompt = f"""
@@ -38,14 +41,28 @@ Description:
 
         text = response.text.strip()
 
-        # Remove markdown code blocks if present
+        # Remove markdown fences if Gemini wraps JSON
         if "```" in text:
-            text = text.split("```")[1]
+            parts = text.split("```")
+            if len(parts) >= 2:
+                text = parts[1]
             text = text.replace("json", "").strip()
 
         parsed = json.loads(text)
 
-        return parsed.get("category"), parsed.get("priority")
+        category = parsed.get("category")
+        priority = parsed.get("priority")
+
+        # Validate output strictly
+        if category not in VALID_CATEGORIES:
+            print("Invalid category from LLM:", category)
+            category = None
+
+        if priority not in VALID_PRIORITIES:
+            print("Invalid priority from LLM:", priority)
+            priority = None
+
+        return category, priority
 
     except Exception as e:
         print("========== LLM ERROR ==========")
