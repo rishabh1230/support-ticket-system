@@ -40,8 +40,7 @@ Description:
         )
 
         text = response.text.strip()
-
-        # Remove markdown fences if Gemini wraps JSON
+        
         if "```" in text:
             parts = text.split("```")
             if len(parts) >= 2:
