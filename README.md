@@ -16,7 +16,7 @@ The system automatically classifies support tickets using AI and assigns:
 
 ---
 
-## 🚀 Features
+## 🚀 Features of the app
 
 ### 🤖 AI Classification
 - Uses **Google Gemini API**
