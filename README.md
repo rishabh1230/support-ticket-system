@@ -12,7 +12,7 @@ The system automatically classifies support tickets using AI and assigns:
 
 - 📂 Category  
 - ⚡ Priority  
-- 📌 Status  
+- 📌 Status  of tickets 
 
 ---
 
