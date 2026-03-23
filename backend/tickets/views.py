@@ -76,6 +76,8 @@ class TicketViewSet(viewsets.ModelViewSet):
     def classify(self, request):
         description = request.data.get("description")
 
+        #Something new happens
+
         if not description:
             return Response(
                 {"error": "Description is required"},
