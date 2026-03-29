@@ -23,6 +23,7 @@ The system automatically classifies support tickets using AI and assigns:
 - Automatically predicts:
   - `category`
   - `priority`
+  - `tickets`
 
 ### 🧾 Ticket Management
 - Create tickets
