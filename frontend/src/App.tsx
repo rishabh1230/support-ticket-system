@@ -129,7 +129,7 @@ function App() {
         </h1>
 
         {/* FORM */}
-        <div className="bg-white shadow-xl rounded-2xl p-6 mb-6">
+        <div className="bg-green shadow-xl rounded-2xl p-6 mb-6">
           <form onSubmit={handleSubmit} className="space-y-4">
 
             <input
@@ -142,7 +142,7 @@ function App() {
             />
 
             <textarea
-              placeholder="Describe the issue..."
+              placeholder="Describe the issue about it..."
               value={description}
               onChange={e => setDescription(e.target.value)}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
