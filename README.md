@@ -12,11 +12,11 @@ The system automatically classifies support tickets using AI and assigns:
 
 - 📂 Category  
 - ⚡ Priority  
-- 📌 Status  of tickets 
+- 📌 Status  of tickets and tokens
 
 ---
 
-## 🚀 Features of the app
+## 🚀 Features of the apps
 
 ### 🤖 AI Classification
 - Uses **Google Gemini API**
