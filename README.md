@@ -5,7 +5,7 @@ An AI-driven full-stack support ticket management system built with:
 - **Django + Django REST Backend Framework**
 - **PostgreSQL**
 - **Google Gemini API**
-- **React + Vite + TailwindCSS**
+- **React + Vite + TailwindCSS** bb
 - **Docker & Docker Compose**
 
 The system automatically classifies support tickets using AI and assigns:
